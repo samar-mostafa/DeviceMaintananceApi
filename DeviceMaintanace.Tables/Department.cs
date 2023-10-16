@@ -10,5 +10,8 @@ namespace DeviceMaintanace.Tables
     {
         public int Id { get; set; }
         public int Name { get; set; }
+
+        public ICollection<Branch> Branches { get; set; }
+        public IList<BrancheDepartment> BranchesDepartments { get; set; }
     }
 }
