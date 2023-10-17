@@ -4,6 +4,7 @@ using DeviceMaintanace.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeviceMaintanace.DAL.Migrations
 {
     [DbContext(typeof(DeviceMaintanaceContext))]
-    partial class DeviceMaintanaceContextModelSnapshot : ModelSnapshot
+    [Migration("20231017114140_addTables")]
+    partial class addTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,29 +229,6 @@ namespace DeviceMaintanace.DAL.Migrations
                     b.ToTable("Employees");
                 });
 
-            modelBuilder.Entity("DeviceMaintanace.Tables.History", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("DeadId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MaintananceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DeadId");
-
-                    b.HasIndex("MaintananceId");
-
-                    b.ToTable("Histories");
-                });
-
             modelBuilder.Entity("DeviceMaintanace.Tables.Maintanance", b =>
                 {
                     b.Property<int>("Id")
@@ -419,25 +399,6 @@ namespace DeviceMaintanace.DAL.Migrations
                         .IsRequired();
 
                     b.Navigation("BrancheDepartment");
-                });
-
-            modelBuilder.Entity("DeviceMaintanace.Tables.History", b =>
-                {
-                    b.HasOne("DeviceMaintanace.Tables.Dead", "Dead")
-                        .WithMany()
-                        .HasForeignKey("DeadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("DeviceMaintanace.Tables.Maintanance", "Maintanance")
-                        .WithMany()
-                        .HasForeignKey("MaintananceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Dead");
-
-                    b.Navigation("Maintanance");
                 });
 
             modelBuilder.Entity("DeviceMaintanace.Tables.Maintanance", b =>

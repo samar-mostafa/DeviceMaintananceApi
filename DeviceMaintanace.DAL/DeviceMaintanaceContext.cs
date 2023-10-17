@@ -48,6 +48,10 @@ namespace DeviceMaintanace.DAL
         public DbSet<Employee> Employees { get; set; }
         public DbSet<DeviceStatus> DeviceStatuses { get; set; }
         public DbSet<BrancheDepartment> BrancheDepartments { get; set; }
+        public DbSet<Maintanance> Maintanances { get; set; }
+        public DbSet<DeviceDetail> DeviceDetails { get; set; }
+        public DbSet<Dead> Deads { get; set; }
+        public DbSet<History> Histories { get; set; }
 
         #endregion
 
