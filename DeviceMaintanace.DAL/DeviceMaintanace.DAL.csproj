@@ -15,4 +15,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DeviceMaintanace.Tables\DeviceMaintanace.Tables.csproj" />
+  </ItemGroup>
+
 </Project>
