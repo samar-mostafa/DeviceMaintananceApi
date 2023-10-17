@@ -1,3 +1,7 @@
+using DeviceMaintanace.DAL;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +12,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+builder.Services.AddDbContext<DeviceMaintanaceContext>(o =>
+{
+    o.UseSqlServer(builder.Configuration.GetConnectionString("con"));
+});
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
