@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DeviceMaintanace.DAL
 {
-    public abstract class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         public DeviceMaintanaceContext db;
         protected IQueryable<T> data;
@@ -135,13 +135,7 @@ namespace DeviceMaintanace.DAL
         }
         #endregion
 
-        #region Get
-        public abstract T GetById(object id);
-        public abstract IQueryable<T> GetAll();
-        public abstract Task<IEnumerable<T>> GetAllAsync();
-        public abstract IQueryable<T> GetAllAsNoTracking();
-
-        #endregion
+        
 
     }
 }

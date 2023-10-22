@@ -43,5 +43,6 @@ namespace DeviceMaintanace.DAL
         Task SaveChangeAsnc();
 
         #endregion
+       
     }
 }

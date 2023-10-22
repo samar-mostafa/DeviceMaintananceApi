@@ -12,7 +12,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DeviceMaintanace.DAL\DeviceMaintanace.DAL.csproj" />
+    <ProjectReference Include="..\DeviceMaintanace.IOC\DeviceMaintanace.IOC.csproj" />
     <ProjectReference Include="..\DeviceMaintanace.Tables\DeviceMaintanace.Tables.csproj" />
+    <ProjectReference Include="..\DeviceMaintanance.BLL\DeviceMaintanance.Core.csproj" />
   </ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />

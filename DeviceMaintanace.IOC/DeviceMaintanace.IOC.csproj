@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DeviceMaintanace.DAL\DeviceMaintanace.DAL.csproj" />
+    <ProjectReference Include="..\DeviceMaintanance.BLL\DeviceMaintanance.Core.csproj" />
   </ItemGroup>
 
 </Project>
