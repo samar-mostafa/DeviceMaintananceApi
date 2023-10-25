@@ -31,12 +31,18 @@ namespace DeviceMaintanance.Core.Services
             return ServiceResult.Success(model);
         }
 
-        public async Task<ServiceResult> EditAsync(int id)
+        public async Task<ServiceResult> EditAsync(int id, string name)
         {
             var entity = _repo.GetById(id);
+            entity.Name = name;
             _repo.Update(entity);
             await _repo.SaveChangeAsnc();
-            return ServiceResult.Success(entity);
+            var model = new BranchVM
+            {
+                Id = entity.Id,
+                Name = entity.Name,
+            };
+            return ServiceResult.Success(model);
         }
 
         public async Task<ServiceResult> AddAsync(AddBranchCommand Command)
@@ -51,9 +57,9 @@ namespace DeviceMaintanance.Core.Services
             return ServiceResult.Success(model);
         }
 
-        public async Task<ServiceResult> GetAllBranches()
+        public async Task<ServiceResult> GetAllBranchesAsSelectList()
         {
-            var res = _repo.All.AsEnumerable();
+            var res = _repo.All;
             var data = new List<BranchVM>();
             foreach (var branch in res)
             {

@@ -34,9 +34,9 @@ namespace DeviceMaintananceApi.Controllers
         }
 
         [HttpPut("EditBranch")]
-        public async Task<IActionResult> EditBranch(int id)
+        public async Task<IActionResult> EditBranch(int id, string name)
         {
-            var res = await _branchService.EditAsync(id);
+            var res = await _branchService.EditAsync(id,name);
             return Result(res);
         }
 

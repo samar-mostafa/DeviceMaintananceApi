@@ -10,9 +10,9 @@ namespace DeviceMaintanance.Core.Interfaces
     public interface IBranchService
     {
         Task<ServiceResult> AddAsync(AddBranchCommand Command);
-        Task<ServiceResult> EditAsync(int id);
+        Task<ServiceResult> EditAsync(int id, string name);
         Task<ServiceResult> DeleteAsync(int id);
         Task<ServiceResult> GetBranchById(int id);
-        Task<ServiceResult> GetAllBranches();
+        Task<ServiceResult> GetAllBranchesAsSelectList();
     }
 }

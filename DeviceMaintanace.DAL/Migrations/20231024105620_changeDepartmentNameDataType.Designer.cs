@@ -4,6 +4,7 @@ using DeviceMaintanace.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeviceMaintanace.DAL.Migrations
 {
     [DbContext(typeof(DeviceMaintanaceContext))]
-    partial class DeviceMaintanaceContextModelSnapshot : ModelSnapshot
+    [Migration("20231024105620_changeDepartmentNameDataType")]
+    partial class changeDepartmentNameDataType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,13 +35,9 @@ namespace DeviceMaintanace.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique();
 
                     b.ToTable("Branches");
                 });
@@ -115,10 +114,6 @@ namespace DeviceMaintanace.DAL.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Name")
-                        .IsUnique()
-                        .HasFilter("[Name] IS NOT NULL");
 
                     b.ToTable("Departments");
                 });
