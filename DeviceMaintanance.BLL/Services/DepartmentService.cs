@@ -35,7 +35,7 @@ namespace DeviceMaintanance.Core.Services
                 BranchId = Command.BranchId,
                 DepartmentId = department.Id
             };
-          
+
             await branchDepartmentRepo.InsertAsync(branchDepartment);
             var model = new DepartmentVM
             {
@@ -76,7 +76,7 @@ namespace DeviceMaintanance.Core.Services
             return ServiceResult.Success(model);
         }
 
-        public async Task<ServiceResult> GetAllDepartmentsAsSelectList()
+        public ServiceResult GetAllDepartmentsAsSelectList()
         {
             var res = _repo.All;
             var data = new List<DepartmentVM>();
@@ -91,7 +91,7 @@ namespace DeviceMaintanance.Core.Services
             return ServiceResult.Success(data);
         }
 
-        public async Task<ServiceResult> GetDepartmentsByBranchId(int id)
+        public ServiceResult GetDepartmentsByBranchId(int id)
         {
             var data = branchDepartmentRepo.All.
                 Include(bd => bd.Department).
@@ -111,26 +111,38 @@ namespace DeviceMaintanance.Core.Services
             return ServiceResult.Success(data);
         }
 
-        public async Task<ServiceResult> GetDepartmensWithBranches()
+        public  ServiceResult GetDepartmensWithBranches()
         {
+            //var data = branchDepartmentRepo.All.
+            //    Include(bd => bd.Department).
+            //    Include(bd => bd.Branch).
+            //    GroupBy(bd => bd.Department.Name).Select(bd =>new DepartmentBranchsVM
+            //    {
+            //        DepartmentName = bd.Key,
+            //        Branches= bd.Select(d=>new BranchVM
+            //        {
+            //            Id=d.BranchId,
+            //            Name=d.Branch.Name
+
+            //        }).ToList() 
+            //    });
             var data = branchDepartmentRepo.All.
                 Include(bd => bd.Department).
                 Include(bd => bd.Branch).
-                GroupBy(bd => bd.Branch.Name).Select(bd =>new BranchDepartmentsVM
-
+                GroupBy(bd => bd.BranchId).Select(bd => new BranchsDepartmentsVM
                 {
-                    BranchName = bd.Key,
-                    Departments= bd.Select(d=>new DepartmentVM
+                    Branche = bd.Select(d => new BranchVM
                     {
-                        Id=d.DepartmentId,
-                        Name=d.Department.Name
-                        
-                    }).ToList() 
-                });
+                        Id = d.BranchId,
+                        Name = d.Branch.Name
+
+                    }).FirstOrDefault(),
+                    DepartmentsNames = bd.Select(d => d.Department.Name).ToList(),
+                }) ;
             return ServiceResult.Success(data);
         }
 
-        public async Task<ServiceResult> GetDepartmentById(int id)
+        public  ServiceResult GetDepartmentById(int id)
         {
             try
             {

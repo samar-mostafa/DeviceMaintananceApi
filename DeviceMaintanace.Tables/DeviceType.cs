@@ -9,7 +9,7 @@ namespace DeviceMaintanace.Tables
     public class DeviceType
     {
         public int Id { get; set; }
-        public string Type { get; set; }
-        public Device Device { get; set; }
+        public string Type { get; set; }  
+        public ICollection<Device>Devices { get; set; }
     }
 }

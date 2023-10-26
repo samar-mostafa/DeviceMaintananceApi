@@ -4,6 +4,7 @@ using DeviceMaintanace.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DeviceMaintanace.DAL.Migrations
 {
     [DbContext(typeof(DeviceMaintanaceContext))]
-    partial class DeviceMaintanaceContextModelSnapshot : ModelSnapshot
+    [Migration("20231025113046_editDeviceTable")]
+    partial class editDeviceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

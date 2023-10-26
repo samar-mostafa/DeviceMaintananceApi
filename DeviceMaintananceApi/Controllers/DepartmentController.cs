@@ -37,31 +37,31 @@ namespace DeviceMaintananceApi.Controllers
             return Result(res);
         }
         [HttpGet("GetAllDepartment")]
-        public async Task<IActionResult> GetAllDepartment()
+        public IActionResult GetAllDepartment()
         {
-            ServiceResult result = await _service.GetAllDepartments();
+            ServiceResult result =  _service.GetAllDepartmentsAsSelectList();
 
             return Result(result);
         }
         [HttpGet("GetDepartmentById")]
-        public async Task<IActionResult> GetDepartmentById(int id)
+        public IActionResult GetDepartmentById(int id)
         {
-            ServiceResult result = await _service.GetDepartmentById(id);
+            ServiceResult result =  _service.GetDepartmentById(id);
 
             return Result(result);
         }
 
         [HttpGet("GetDepartmentsByBranchId")]
-        public async Task<IActionResult> GetDepartmentsByBranchId(int id)
+        public IActionResult GetDepartmentsByBranchId(int id)
         {
-            ServiceResult result = await _service.GetDepartmentsByBranchId(id);
+            ServiceResult result =  _service.GetDepartmentsByBranchId(id);
             return Result(result);
         }
 
         [HttpGet("GetDepartmensWithBranches")]
-        public async Task<IActionResult> GetDepartmensWithBranches()
+        public IActionResult GetDepartmensWithBranches()
         {
-            ServiceResult result = await _service.GetDepartmensWithBranches();
+            ServiceResult result =  _service.GetDepartmensWithBranches();
             return Result(result);
         }
 

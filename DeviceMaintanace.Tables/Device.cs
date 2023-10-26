@@ -12,7 +12,6 @@ namespace DeviceMaintanace.Tables
         [Key]
         public string SerialNumber { get; set; }
         public string DeviceModel { get; set; }
-
         public int DeviceTypeId { get; set; }
         public DeviceType DeviceType { get; set; }
     }

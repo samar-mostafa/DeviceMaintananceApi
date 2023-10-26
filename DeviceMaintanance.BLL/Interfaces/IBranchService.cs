@@ -12,7 +12,9 @@ namespace DeviceMaintanance.Core.Interfaces
         Task<ServiceResult> AddAsync(AddBranchCommand Command);
         Task<ServiceResult> EditAsync(int id, string name);
         Task<ServiceResult> DeleteAsync(int id);
-        Task<ServiceResult> GetBranchById(int id);
-        Task<ServiceResult> GetAllBranchesAsSelectList();
+        ServiceResult GetBranchById(int id);
+        ServiceResult GetAllBranchesAsSelectList();
+        ServiceResult GetBranchsByDepartmentId(int id);
+        ServiceResult GetBranchesWithDepartmens();
     }
 }

@@ -41,20 +41,37 @@ namespace DeviceMaintananceApi.Controllers
         }
 
         [HttpGet("GetAllBranches")]
-        public async Task<IActionResult> GetAllBranches()
+        public IActionResult GetAllBranches()
         {
-            ServiceResult result = await _branchService.GetAllBranches();
+            ServiceResult result =  _branchService.GetAllBranchesAsSelectList();
             
             return Result(result);
         }
 
         [HttpGet("GetBranchById")]
-        public async Task<IActionResult> GetBranchById(int id)
+        public  IActionResult GetBranchById(int id)
         {
-            ServiceResult result = await _branchService.GetBranchById(id);
+            ServiceResult result =  _branchService.GetBranchById(id);
 
             return Result(result);
         }
+
+        [HttpGet("GetBranchsByDepartmentId")]
+        public IActionResult GetBranchsByDepartmentId(int id)
+        {
+            ServiceResult result = _branchService.GetBranchsByDepartmentId(id);
+
+            return Result(result);
+        }
+
+        [HttpGet("GetBranchesWithDepartmens")]
+        public IActionResult GetBranchesWithDepartmens()
+        {
+            ServiceResult result = _branchService.GetBranchesWithDepartmens();
+
+            return Result(result);
+        }
+
 
 
 
