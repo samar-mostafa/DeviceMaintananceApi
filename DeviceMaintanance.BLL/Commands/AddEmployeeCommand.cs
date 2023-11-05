@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DeviceMaintanace.Tables
+namespace DeviceMaintanance.Core.Commands
 {
-    public class Employee
+    public class EmployeeCommand
     {
-        [Key]        
+        [Required]
+        [RegularExpression("^[0][0-9]{11}$")]
+        [MaxLength(12,ErrorMessage ="يجب ادخال 12 رقم فقط")]
         public string MobilePhone { get; set; }
         public string NationalId { get; set; }
-        public string Name { get; set; }       
+        [Required]
+        public string Name { get; set; }
+        [Required]
         public int BrancheId { get; set; }
-      
+        [Required]
         public int DepartmentId { get; set; }
-
-
-        [ForeignKey("BrancheId,DepartmentId")]
-        public BrancheDepartment BrancheDepartment { get; set; }
-
     }
+
+
+   
+
+
 }

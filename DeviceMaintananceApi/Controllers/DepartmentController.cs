@@ -18,9 +18,9 @@ namespace DeviceMaintananceApi.Controllers
         }
 
         [HttpPost("AddDepartment")]
-        public async Task<IActionResult> AddDepartment([FromBody] AddDepartmentCommand branch)
+        public async Task<IActionResult> AddDepartment([FromBody] AddDepartmentCommand command)
         {
-            ServiceResult result = await _service.AddAsync(branch);
+            ServiceResult result = await _service.AddAsync(command);
             return Result(result);
         }
         [HttpDelete("DeleteDepartment")]

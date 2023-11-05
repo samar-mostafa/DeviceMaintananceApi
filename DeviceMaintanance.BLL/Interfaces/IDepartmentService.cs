@@ -16,5 +16,6 @@ namespace DeviceMaintanance.Core.Interfaces
         ServiceResult GetAllDepartmentsAsSelectList();
         ServiceResult GetDepartmentsByBranchId(int id);
         ServiceResult GetDepartmensWithBranches();
+        string GetDepartmentNameById(int id);
     }
 }

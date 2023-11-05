@@ -161,5 +161,7 @@ namespace DeviceMaintanance.Core.Services
                 return ServiceResult.Error(e.Message);
             }
         }
+
+        public string GetDepartmentNameById(int id) => _repo.AllUntracked.SingleOrDefault(b => b.Id == id).Name;
     }
 }

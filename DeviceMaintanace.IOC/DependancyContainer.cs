@@ -19,12 +19,14 @@ namespace DeviceMaintanace.IOC
             services.AddScoped<IBranchService,BranchService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
             services.AddScoped<IDeviceService, DeviceService>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
             services.AddScoped<BranchRepository>();
             services.AddScoped<DepartmentRepository>();
             services.AddScoped<DeviceRepository>();
             services.AddScoped<DeviceTypeRepository>();
             services.AddScoped<BranchDepartmentRepository>();
+            services.AddScoped<EmployeeRepository>();
 
         }
 

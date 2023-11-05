@@ -132,5 +132,8 @@ namespace DeviceMaintanance.Core.Services
                 });
             return ServiceResult.Success(data);
         }
+
+        public string GetBranchNameById(int id) => _repo.AllUntracked.SingleOrDefault(b => b.Id == id).Name;
+        
     }
 }
